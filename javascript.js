@@ -127,3 +127,10 @@ function renderLibrary() {
     cardContainer.appendChild(card);
   });
 }
+
+function updateCopyrightYear() {
+    const yearSpan = document.getElementById('current-year');
+    const currentYear = new Date().getFullYear();
+    yearSpan.textContent = currentYear;
+}
+updateCopyrightYear();

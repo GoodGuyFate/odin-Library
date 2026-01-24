@@ -286,3 +286,25 @@ h1 {
   filter: brightness(1.2);
   transform: translateY(-2px);
 }
+.footer {
+  width: 100%;
+  padding: 15px 10px;
+  margin-top: auto;
+  background-color: #241e1a;
+  color: #d6c19f;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+.footer-link {
+  color: #d6c19f; 
+  text-decoration: none; 
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent; 
+}
+
+.footer-link:hover {
+  color: #fff; 
+  border-bottom: 1px solid #d6c19f;
+}
