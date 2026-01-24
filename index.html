@@ -1,13 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="style.css">
-    <script async src="javascript.js" defer></script>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <script src="javascript.js" defer></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-header">
+      <h1>Library</h1>
+    </div>
+    <div class="background-image-container">
+      <img src="images/library.jpg" alt="cozy library" />
+    </div>
+    <button id="add-book-btn">Add New Book</button>
+    <div id="form-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Add New Book</h2>
+          <span class="close-button">&times;</span>
+        </div>
+        <form action="" id="new-book-form">
+          <input type="text" id="title" placeholder="Title" required />
+          <input type="text" id="author" placeholder="Author" required />
+          <input type="text" id="pages" placeholder="Pages" required />
+          <div class="input-group">
+            <label for="cover">Book Cover Image</label>
+            <input type="file" id="cover" accept="image/*" />
+            <p class="input-hint">
+              Optional: If empty, a default cover will be used.
+            </p>
+          </div>
+          <div id="preview-container" style="display: none">
+            <p>Preview:</p>
+            <img id="image-preview" src="" alt="Cover preview" />
+          </div>
+          <label class="checkbox-container">
+             <input type="checkbox" id="read"/>
+             <span class="checkmark"></span> 
+             Have you read it? 
+            </label>
+          <button type="submit" id="submit-book">Add to Library</button>
+        </form>
+      </div>
+    </div>
+    <div class="library-content">
+      <div class="book-card-container">
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+        <div class="book-card-item">
+          <img src="images/blank-cover.jpg" alt="blank book cover" />
+          <h3 class="book-title">Book Title</h3>
+          <p>Book Author</p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

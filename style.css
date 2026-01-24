@@ -1,0 +1,220 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background: #d6c19f;
+}
+h1,
+.book-title {
+  font-family: "Lora", serif;
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style-type: none;
+}
+.main-header {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  color: #241e1a;
+  /* border: solid red 2px; */
+}
+.background-image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  /* border: solid blue 2px; */
+}
+.background-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.library-content {
+  /* border: solid; */
+  color: #241e1a;
+  flex-grow: 1;
+}
+.book-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  justify-content: center;
+  gap: 20px;
+  padding: 50px;
+}
+.book-card-item {
+  display: grid;
+  gap: 5px;
+  justify-content: center;
+}
+.book-card-item img {
+  height: 200px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 36, 32, 0.7);
+  backdrop-filter: blur(5px);
+}
+.modal-content {
+  background-color: #d6c19f;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.close-button {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #241e1a;
+}
+.input-hint {
+  font-size: 0.75rem;
+  color: #5d5146;
+  font-style: italic;
+}
+.close-button:hover {
+  color: #5d4037;
+}
+.modal-header h2 {
+  color: #241e1a;
+  margin: 0;
+}
+#new-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#new-book-form h2 {
+  font-family: "Lora", serif;
+  color: #241e1a;
+}
+#new-book-form input[type="text"],
+#new-book-form input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+}
+#new-book-form input[type="file"] {
+  padding: 8px;
+  background: #e5d1b1;
+  border: 1px dashed #241e1a;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+}
+#new-book-form input[type="file"]::file-selector-button {
+  background-color: #241e1a;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+#submit-book {
+  background-color: #241e1a;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  user-select: none;
+}
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #e5d1b1;
+  border: 1px solid #241e1a;
+  border-radius: 4px;
+}
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #d1b894;
+}
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #241e1a;
+  border-color: #5d4037;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
