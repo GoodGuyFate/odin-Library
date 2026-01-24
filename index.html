@@ -18,7 +18,9 @@
     <div class="background-image-container">
       <img src="images/library.jpg" alt="cozy library" />
     </div>
-    <button id="add-book-btn">Add New Book</button>
+    <div class="action-bar">
+      <button id="add-book-btn">Add New Book</button>
+    </div>
     <div id="form-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -36,57 +38,17 @@
               Optional: If empty, a default cover will be used.
             </p>
           </div>
-          <div id="preview-container" style="display: none">
-            <p>Preview:</p>
-            <img id="image-preview" src="" alt="Cover preview" />
-          </div>
           <label class="checkbox-container">
-             <input type="checkbox" id="read"/>
-             <span class="checkmark"></span> 
-             Have you read it? 
-            </label>
+            <input type="checkbox" id="read" />
+            <span class="checkmark"></span>
+            Have you read it?
+          </label>
           <button type="submit" id="submit-book">Add to Library</button>
         </form>
       </div>
     </div>
     <div class="library-content">
-      <div class="book-card-container">
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-        <div class="book-card-item">
-          <img src="images/blank-cover.jpg" alt="blank book cover" />
-          <h3 class="book-title">Book Title</h3>
-          <p>Book Author</p>
-        </div>
-      </div>
+      <div class="book-card-container"></div>
     </div>
   </body>
 </html>
