@@ -21,6 +21,7 @@ class Library {
 
   constructor(containerElement) {
     this.container = containerElement;
+    this.loadFromLocalStorage();
   }
 
   get allBooks() {
@@ -29,12 +30,29 @@ class Library {
 
   addBook(newBook) {
     this.#books.push(newBook);
+    this.saveToLocalStorage();
     this.render();
   }
 
   removeBook(id) {
     this.#books = this.#books.filter((book) => book.id !== id);
+    this.saveToLocalStorage();
     this.render();
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem("myLibrary", JSON.stringify(this.#books));
+  }
+
+  loadFromLocalStorage() {
+    const savedBooks = localStorage.getItem("myLibrary");
+    if (savedBooks) {
+      const parsedBooks = JSON.parse(savedBooks);
+
+      this.#books = parsedBooks.map(
+        (b) => new Book(b.title, b.author, b.pages, b.read, b.cover),
+      );
+    }
   }
 
   render() {
@@ -67,6 +85,7 @@ class Library {
 
       toggleBtnElement.onclick = () => {
         book.toggleRead();
+        this.saveToLocalStorage();
         this.render();
       };
 
@@ -109,24 +128,74 @@ const bookForm = document.getElementById("new-book-form");
 bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
-  const read = document.getElementById("read").checked;
+  if (!bookForm.checkValidity()) {
+    showAllErrors();
+  } else {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const read = document.getElementById("read").checked;
 
-  const fileInput = document.getElementById("cover");
-  const file = fileInput.files[0];
-  let coverPath = "images/blank-cover.jpg";
+    const fileInput = document.getElementById("cover");
+    const file = fileInput.files[0];
+    let coverPath = "images/blank-cover.jpg";
 
-  if (file) {
-    coverPath = URL.createObjectURL(file);
+    if (file) {
+      coverPath = URL.createObjectURL(file);
+    }
+    const newBook = new Book(title, author, pages, read, coverPath);
+    myLibrary.addBook(newBook);
+    bookForm.reset();
+    modal.style.display = "none";
+    document.querySelectorAll(".error").forEach((span) => {
+      span.textContent = "";
+      span.className = "error";
+    });
   }
-
-  const newBook = new Book(title, author, pages, read, coverPath);
-  myLibrary.addBook(newBook);
-  bookForm.reset();
-  modal.style.display = "none";
 });
+
+bookForm.querySelectorAll("input[required]").forEach((input) => {
+  input.addEventListener("input", () => {
+    const errorSpan = input.nextElementSibling;
+    if (input.validity.valid) {
+      errorSpan.textContent = "";
+      errorSpan.className = "error";
+    }
+  });
+});
+
+const errorMessages = {
+  title: {
+    valueMissing: "Every book needs a title! What are we reading?",
+  },
+  author: {
+    valueMissing: "Who wrote this? Please provide an author.",
+  },
+  pages: {
+    valueMissing: "How many pages is it? Even a pamphlet has 1 page.",
+  },
+};
+
+function showAllErrors() {
+  const inputs = bookForm.querySelectorAll("input[required]");
+
+  inputs.forEach((input) => {
+    const errorSpan = input.nextElementSibling;
+    const fieldId = input.id;
+
+    if (!input.validity.valid) {
+      if (input.validity.valueMissing) {
+        errorSpan.textContent = errorMessages[fieldId].valueMissing;
+      } else if (input.validity.tooShort) {
+        errorSpan.textContent = errorMessages[fieldId].tooShort;
+      } else if (input.validity.typeMismatch) {
+        errorSpan.textContent = errorMessages[fieldId].typeMismatch;
+      }
+
+      errorSpan.className = "error active";
+    }
+  });
+}
 
 function updateCopyrightYear() {
   const yearSpan = document.getElementById("current-year");

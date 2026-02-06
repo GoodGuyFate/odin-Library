@@ -27,10 +27,13 @@
           <h2>Add New Book</h2>
           <span class="close-button">&times;</span>
         </div>
-        <form action="" id="new-book-form">
+        <form action="" id="new-book-form" novalidate>
           <input type="text" id="title" placeholder="Title" required />
+          <span class="error" aria-live="polite"></span>
           <input type="text" id="author" placeholder="Author" required />
-          <input type="text" id="pages" placeholder="Pages" required />
+          <span class="error" aria-live="polite"></span>
+          <input type="number" id="pages" placeholder="Pages" min="1" required />
+          <span class="error" aria-live="polite"></span>
           <div class="input-group">
             <label for="cover">Book Cover Image</label>
             <input type="file" id="cover" accept="image/*" />
